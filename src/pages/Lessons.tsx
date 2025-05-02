@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Book, Headphones, List, Mic, Translate, Users } from 'lucide-react';
+import { Book, Headphones, List, Mic, Globe, Users } from 'lucide-react';
 
 const Lessons = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('zulu');

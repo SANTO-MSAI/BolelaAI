@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import Layout from '@/components/layout/Layout';
-import { Book, Headphones, Mic, Translate, Volume } from 'lucide-react';
+import { Book, Headphones, Mic, Globe, Volume } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -74,7 +74,7 @@ const Index = () => {
                 description: 'Listen to native speakers and train your ear for authentic sounds'
               },
               {
-                icon: <Translate className="h-8 w-8 text-mzansi-purple" />,
+                icon: <Globe className="h-8 w-8 text-mzansi-purple" />,
                 title: 'Multiple Languages',
                 description: 'Learn any of South Africa\'s 11 official languages on one platform'
               }

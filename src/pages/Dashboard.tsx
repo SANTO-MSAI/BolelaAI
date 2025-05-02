@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { Book, Headphones, List, Mic, Translate, User } from 'lucide-react';
+import { Book, Headphones, List, Mic, Globe, User } from 'lucide-react';
 
 const Dashboard = () => {
   // Mock data
@@ -28,7 +28,7 @@ const Dashboard = () => {
       title: "Zulu Conversation Skills",
       description: "Learn everyday conversational phrases in Zulu",
       level: "Intermediate",
-      icon: <Translate className="h-6 w-6 text-mzansi-purple" />,
+      icon: <Globe className="h-6 w-6 text-mzansi-purple" />,
       path: "/lessons/zulu/conversation"
     },
     { 
