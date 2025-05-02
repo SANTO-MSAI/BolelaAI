@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Mic, MicOff, Volume } from 'lucide-react';
 import { useToast } from "@/components/ui/use-toast";
+import axios from "axios";
 
 const Practice = () => {
   const [isListening, setIsListening] = useState(false);
@@ -64,7 +65,18 @@ const Practice = () => {
       setIsListening(false);
       const randomPhrases = getPracticePhrasesForLanguage();
       const randomPhrase = randomPhrases[Math.floor(Math.random() * randomPhrases.length)];
-      
+      /**
+       * Create mock object to test communication
+       * Key:value = speech:randomPhrase
+       */
+      axios.post("https://localhost:5000/speech_practice", randomPhrases).then(function(response) {
+              console.log(response.data)
+                alert(response.data.message);
+      })
+            .catch(function(error) {
+                console.error('There was an error!', error);
+            });
+
       setTranscript("I said: " + randomPhrase.translation);
       setResult(randomPhrase.phrase);
       
