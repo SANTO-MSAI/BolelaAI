@@ -22,14 +22,30 @@ const Signup = () => {
     setIsLoading(true);
 
     // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Account Created",
-        description: "Welcome to TalkMzansi! Let's start learning.",
-      });
-      navigate('/dashboard');
-    }, 1500);
+    // setTimeout(() => {
+    //   setIsLoading(false);
+    //   toast({
+    //     title: "Account Created",
+    //     description: "Welcome to TalkMzansi! Let's start learning.",
+    //   });
+    //   navigate('/dashboard');
+    // }, 1500);
+      try {  // TESTING API CALL AT LOCALHOST:8090
+        const response = await fetch("http://localhost:8090/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "user cridentials",
+            },
+            body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await response.json();
+        console.log(data); // Handle success (e.g., redirect or show message)
+    } catch (error) {
+        console.error("Signup failed:", error);
+    } finally {
+        setIsLoading(false);
+    }
   };
 
   return (
