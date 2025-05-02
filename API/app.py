@@ -124,7 +124,7 @@ def zulu_conversation_lesson_4():
 
 
 @app.route("/lessons/zulu/vocabulary/5")
-def zulu_conversation_lesson_3():
+def zulu_vocabulary_lesson_5():
     pass
 
 
@@ -165,7 +165,7 @@ def xhosa_conversation_lesson_4():
 
 
 @app.route("/lessons/xhosa/vocabulary/5")
-def xhosa_conversation_lesson_3():
+def xhosa_vocabulary_lesson_5():
     pass
 
 
@@ -206,7 +206,7 @@ def afrikaans_conversation_lesson_4():
 
 
 @app.route("/lessons/afrikaans/vocabulary/5")
-def afrikaans_conversation_lesson_3():
+def afrikaans_vocabulary_lesson_5():
     pass
 
 
@@ -247,7 +247,7 @@ def sotho_conversation_lesson_4():
 
 
 @app.route("/lessons/sotho/vocabulary/5")
-def sotho_conversation_lesson_3():
+def sotho_vocabulary_lesson_5():
     pass
 
 
@@ -288,7 +288,7 @@ def tswana_conversation_lesson_4():
 
 
 @app.route("/lessons/tswana/vocabulary/5")
-def tswana_conversation_lesson_3():
+def tswana_vocabulary_lesson_5():
     pass
 
 
@@ -329,7 +329,7 @@ def venda_conversation_lesson_4():
 
 
 @app.route("/lessons/venda/vocabulary/5")
-def venda_conversation_lesson_3():
+def venda_vocabulary_lesson_5():
     pass
 
 
@@ -370,7 +370,7 @@ def tsonga_conversation_lesson_4():
 
 
 @app.route("/lessons/tsonga/vocabulary/5")
-def tsonga_conversation_lesson_3():
+def tsonga_vocabulary_lesson_5():
     pass
 
 
@@ -411,7 +411,7 @@ def swati_conversation_lesson_4():
 
 
 @app.route("/lessons/swati/vocabulary/5")
-def swati_conversation_lesson_3():
+def swati_vocabulary_lesson_5():
     pass
 
 
@@ -452,7 +452,7 @@ def ndebele_conversation_lesson_4():
 
 
 @app.route("/lessons/ndebele/vocabulary/5")
-def ndebele_conversation_lesson_3():
+def ndebele_vocabulary_lesson_5():
     pass
 
 
@@ -472,4 +472,4 @@ def ndebele_listening_lesson_8():
 
 
 if __name__=="__main__":
-    app.run(debug=True, port=8090)
+    app.run(debug=True, port=5000)
