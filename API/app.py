@@ -1,25 +1,25 @@
 from flask import Flask, request, jsonify, session, redirect
 from flask_cors import CORS
 import csv
-import pyrebase
+# import pyrebase
 
 
 app = Flask(__name__)
 CORS(app)
 app.secret_key = "thetha!"
 
-config = {
-  "apiKey": "AIzaSyA5UXGB29M3onAyLhutM_NVbHtHelDf0dg",
-  "authDomain": "talkmzansi-88466.firebaseapp.com",
-  "databaseURL": "https://talkmzansi-88466-default-rtdb.firebaseio.com",
-  "projectId": "talkmzansi-88466",
-  "storageBucket": "talkmzansi-88466.firebasestorage.app",
-  "messagingSenderId": "903696733632",
-  "appId": "1:903696733632:web:55f056e5aaf57867b12425",
-}
+# config = {
+#   "apiKey": "AIzaSyA5UXGB29M3onAyLhutM_NVbHtHelDf0dg",
+#   "authDomain": "talkmzansi-88466.firebaseapp.com",
+#   "databaseURL": "https://talkmzansi-88466-default-rtdb.firebaseio.com",
+#   "projectId": "talkmzansi-88466",
+#   "storageBucket": "talkmzansi-88466.firebasestorage.app",
+#   "messagingSenderId": "903696733632",
+#   "appId": "1:903696733632:web:55f056e5aaf57867b12425",
+# }
 
-firebase = pyrebase.initialize_app(config)
-auth = firebase.auth()
+# firebase = pyrebase.initialize_app(config)
+# auth = firebase.auth()
 
 
 @app.route("/")
@@ -37,49 +37,50 @@ def speech_practice_request():
         print("Received data:", data)
         with open(user_speech, 'a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([data['phrase'], data['translation']])
+            for item in data:
+                writer.writerow([item['phrase'], item['translation']])
         return jsonify({'message': 'Speech received.'}), 201
     except Exception as e:
         print("Error occurred:", e)
         return jsonify({'message': 'Error adding speech.'}), 500
 
 
-@app.route("/login", methods=['POST', "GET"])
-def signin():
-    if request.method == "POST":
-        data = request.json
-        email = data["email"]
-        password = data["password"]
-    try:
-        user = auth.sign_in_with_email_and_password(email, password)
-        session["user"] = email
-    except:
-        return jsonify({"message": "Failed to login"}), 401   
+# @app.route("/login", methods=['POST', "GET"])
+# def signin():
+#     if request.method == "POST":
+#         data = request.json
+#         email = data["email"]
+#         password = data["password"]
+#     try:
+#         user = auth.sign_in_with_email_and_password(email, password)
+#         session["user"] = email
+#     except:
+#         return jsonify({"message": "Failed to login"}), 401   
 
 
-@app.route("/signup", methods=['POST'])
-def signup():
-    try:
-        data = request.json
+# @app.route("/signup", methods=['POST'])
+# def signup():
+#     try:
+#         data = request.json
 
-        name = data["name"]
-        email = data["email"]
-        password = data["password"]
-        auth.create_user_with_email_and_password(email, password)
-        # user = auth.get_account_info(user["id_token"])
-        # user = auth.send_email_verification(user["id_token"])
-        # user = auth.send_password_reset_email(user["id_token"])
+#         name = data["name"]
+#         email = data["email"]
+#         password = data["password"]
+#         auth.create_user_with_email_and_password(email, password)
+#         # user = auth.get_account_info(user["id_token"])
+#         # user = auth.send_email_verification(user["id_token"])
+#         # user = auth.send_password_reset_email(user["id_token"])
 
-        return jsonify({"message": "Sign-up successfully"}), 201
-    except Exception as e:
-        print("Error occurred:", e)
-        return jsonify({"message": "email_exists"}), 400
+#         return jsonify({"message": "Sign-up successfully"}), 201
+#     except Exception as e:
+#         print("Error occurred:", e)
+#         return jsonify({"message": "email_exists"}), 400
 
 
-@app.route("/logout")  # when going to home page 
-def logout():
-    session.pop("user")
-    return redirect("/")
+# @app.route("/logout")  # when going to home page 
+# def logout():
+#     session.pop("user")
+#     return redirect("/")
 
 
 @app.route("/lessons")
