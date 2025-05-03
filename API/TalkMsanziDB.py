@@ -96,7 +96,7 @@ def adjustLanguageStats(translateFrom, translateTo):
 # if __name__ == "__main__":
 #     addNewUser("mothofeelama@gmail.com","Mothofeela","Basic XiTsonga")
 #     addNewUser("mokgethilakabane@gmail.com","Lakabane","Basic TshiVenda")
-    addNewlanguages()
+    # addNewlanguages()
 #     addNewUserLanguage("mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
 #     addNewUserLanguage("mokgethilakabane@gamil.com","IsiZulu","English","Lalela la","listen here")
 # addNewlanguages()
