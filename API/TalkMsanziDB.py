@@ -23,11 +23,11 @@ def addNewUserLanguage(translationQueryNumber,accountEmail,translateFrom,transla
     db.child("USER LANGUAGES").child(translationQueryNumber).set(data)
 
 def addNewlanguages():
-    dataOne = {"Name":"Sesotho","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+    dataOne = {"Name":"Sesotho","Abbreviation":"st","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
 
-    dataTwo = {"Name":"IsiZulu","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+    dataTwo = {"Name":"IsiZulu","Abbreviation":"zu","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
 
-    dataThree = {"Name":"Afrikaans","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+    dataThree = {"Name":"Afrikaans","Abbreviation":"af","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
 
     db.child("LANGUAGES").child("1").set(dataOne)
     db.child("LANGUAGES").child("2").set(dataTwo)
