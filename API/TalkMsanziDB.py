@@ -41,20 +41,36 @@ def addNewlanguages():
 
 def adjustLanguageStats(translateFrom, translateTo):
     languages = db.child("LANGUAGES").get()
-    for language in languages.each():
-        if language.val()["Name"] == translateFrom:
-            n = int (language.val()["Number of translations from language"])
+    l = len(languages.val())
+    m = 0
+
+    while (m < l):
+        if languages.val()[m] == None:
+            m += 1
+            break
+
+    # print(l)
+    # print(languages.val())
+
+    for language in languages.val()[m:]:
+        language_key = languages.val()[m:].index(language)+1
+        if language["Name"] == translateFrom:
+            n = int (language["Number of translations from language"])
+            o = int (language["Number of translations to language"])
             n += 1
-            db.child("LANGUAGES").child(language.key()).update({"Net translation queries":str(n)})
-            db.child("LANGUAGES").child(language.key()).update({"Number of translations from language":str(n)})
-        elif language.val()["Name"] == translateTo:
-            n = int (language.val()["Number of translations to language"])
+            db.child("LANGUAGES").child(str(language_key)).update({"Net translation queries":str(n+o)})
+            db.child("LANGUAGES").child(str(language_key)).update({"Number of translations from language":str(n)})
+        elif language["Name"] == translateTo:
+            n = int (language["Number of translations to language"])
+            o = int (language["Number of translations from language"])
             n += 1
-            db.child("LANGUAGES").child(language.key()).update({"Net translation queries":str(n)})
-            db.child("LANGUAGES").child(language.key()).update({"Number of translations to language":str(n)})
+            db.child("LANGUAGES").child(str(language_key)).update({"Net translation queries":str(n+o)})
+            db.child("LANGUAGES").child(str(language_key)).update({"Number of translations to language":str(n)})
 
 
-addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
-addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
-addNewlanguages()
-# adjustLanguageStats("Sesotho,IsiZulu")
+# addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
+# addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
+# addNewlanguages()
+# adjustLanguageStats("Sesotho","IsiZulu")
+# adjustLanguageStats("IsiZulu","Afrikaans")
+# adjustLanguageStats("Afrikaans","Sesotho")
