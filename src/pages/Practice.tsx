@@ -69,7 +69,12 @@ const Practice = () => {
        * Create mock object to test communication
        * Key:value = speech:randomPhrase
        */
-      axios.post("https://localhost:5000/speech_practice", randomPhrases).then(function(response) {
+     axios.post("http://localhost:5000/speech_practice", randomPhrases, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then(function(response) {
+        
               console.log(response.data)
                 alert(response.data.message);
       })
