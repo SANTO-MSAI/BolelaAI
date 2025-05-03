@@ -181,7 +181,7 @@ const Lessons = () => {
                       </CardContent>
                       <CardFooter>
                         <Link 
-                          to={`/lessons/${selectedLanguage}/${type.id}/${module.id}`}
+                          to={`/basiclessons/${selectedLanguage}/${type.id}/${module.id}`}
                           className="w-full"
                         >
                           <Button 
