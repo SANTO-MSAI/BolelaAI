@@ -36,11 +36,15 @@ user_speech = 'user_speech.csv'
 def speech_practice_request():
     try:
         data = request.json
+        phrases = data.get("phrases")
+        targetLanguage = data.get("targetLanguage")
+        sourceLanguage = data.get("sourceLanguage")
         print("Received data:", data)
-        with open(user_speech, 'a', newline='') as file:
-            writer = csv.writer(file)
-            for item in data:
-                writer.writerow([item['phrase'], item['translation']])
+        # with open(user_speech, 'a', newline='') as file:
+        #     writer = csv.writer(file)
+        for item in phrases:
+            addNewUserLanguage("",sourceLanguage,targetLanguage,item['phrase'], item['translation'])
+                #writer.writerow([item['phrase'], item['translation']])
         return jsonify({'message': 'Speech received.'}), 201
     except Exception as e:
         print("Error occurred:", e)
