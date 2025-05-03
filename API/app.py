@@ -53,7 +53,7 @@ def signin():
         password = data["password"]
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        session["user"] = email
+        session[user] = email
     except:
         return jsonify({"message": "Failed to login"}), 401   
 
