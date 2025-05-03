@@ -93,12 +93,12 @@ def adjustLanguageStats(translateFrom, translateTo):
             db.child("LANGUAGES").child(str(language_key)).update({"Number of translations to language":str(n)})
 
 
-if __name__ == "__main__":
-    addNewUser("mothofeelama@gmail.com","Mothofeela","Basic XiTsonga")
-    addNewUser("mokgethilakabane@gmail.com","Lakabane","Basic TshiVenda")
-    addNewlanguages()
-    addNewUserLanguage("mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
-    addNewUserLanguage("mokgethilakabane@gamil.com","IsiZulu","English","Lalela la","listen here")
+# if __name__ == "__main__":
+#     addNewUser("mothofeelama@gmail.com","Mothofeela","Basic XiTsonga")
+#     addNewUser("mokgethilakabane@gmail.com","Lakabane","Basic TshiVenda")
+#     addNewlanguages()
+#     addNewUserLanguage("mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
+#     addNewUserLanguage("mokgethilakabane@gamil.com","IsiZulu","English","Lalela la","listen here")
 # addNewlanguages()
 # adjustLanguageStats("Sesotho","IsiZulu")
 # adjustLanguageStats("IsiZulu","Afrikaans")
