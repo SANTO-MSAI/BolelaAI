@@ -22,18 +22,26 @@ def addNewUserLanguage(translationQueryNumber,accountEmail,translateFrom,transla
     data = {"Email":accountEmail,"Translate from":translateFrom,"translate to":translateTo,"translated text":translatedText,"Translation":translation}
     db.child("USER LANGUAGES").child(translationQueryNumber).set(data)
 
+def addNewlanguages():
+    dataOne = {"Name":"Sesotho","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+
+    dataTwo = {"Name":"IsiZulu","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+
+    dataThree = {"Name":"Afrikaans","Abbreviation":"Lorem ipsum","Net translation queries":"0","Number of translations from language":"0","Number of translations to language":"0"}
+
+    db.child("LANGUAGES").child("1").set(dataOne)
+    db.child("LANGUAGES").child("2").set(dataTwo)
+    db.child("LANGUAGES").child("3").set(dataThree)
+    #minimumViableData = [dataOne,dataTwo,dataThree]
+
+    # n = 0
+    # for dataSet in minimumViableData:
+    #     n += 1
+    #     db.child("LANGUAGES").child(f"{n}").set(dataSet)
+
 def adjustLanguageStats():
     pass
 
-# def createDatabase():
-#     db.child("USERS").child("1").set({"Name":"","Surname":"","Username":"","Password":"","Home language":"",})
-#     db.child("USER_LANGUAGES").child("1").set({"Username":"","Language name":"","Text to translate":"","Text translation":""})
-#     db.child("LANGUAGES").child("1").set({"Language name":"","Abbreviation":"","Translate from language":"True"})
-#     # db.child("LANGUAGES").child("XiTsonga")
-#     # db.child("LANGUAGES").child("TshiVenda")
-#     # db.child("LANGUAGES").child("Sepedi")
-
-# createDatabase()
-
 # addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
 # addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
+addNewlanguages()
