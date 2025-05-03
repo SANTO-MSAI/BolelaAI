@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, session, redirect
 from flask_cors import CORS
 import csv
 import pyrebase
+from TalkMsanziDB import *
+
 
 
 app = Flask(__name__)
@@ -67,6 +69,7 @@ def signup():
         email = data["email"]
         password = data["password"]
         auth.create_user_with_email_and_password(email, password)
+        addNewUser()
         # user = auth.get_account_info(user["id_token"])
         # user = auth.send_email_verification(user["id_token"])
         # user = auth.send_password_reset_email(user["id_token"])

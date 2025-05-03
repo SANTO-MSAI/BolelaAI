@@ -14,11 +14,35 @@ firebase = pyrebase.initialize_app(config)
 
 db = firebase.database()
 
-def addNewUser(userRegistrationNumber, accountEmail, Name,Surname,homeLanguage, learningPath):
+def addNewUser(accountEmail, Name,Surname,homeLanguage, learningPath):
+    users = db.child("USERS").get()
+    userRegistrationNumber = 0
+
+    if (users.val() == None):
+        numberOfUsers = 0
+    else:
+        numberOfUsers = len(users.val())
+        if (None in users.val()):
+            numberOfUsers -= users.val().count(None)
+
+    userRegistrationNumber = numberOfUsers + 1
+
     data = {"Name":Name,"Surname":Surname,"Email":accountEmail,"Home language":homeLanguage,"learning path":learningPath}
     db.child("USERS").child(userRegistrationNumber).set(data)
 
-def addNewUserLanguage(translationQueryNumber,accountEmail,translateFrom,translateTo,translatedText,translation):
+def addNewUserLanguage(accountEmail,translateFrom,translateTo,translatedText,translation):
+    translationQueryNumber = 0
+    translations = db.child("USER LANGUAGES").get()
+
+    if (translations.val() == None):
+        numberOfTranslations = 0
+    else:
+        numberOfTranslations = len(translations.val())
+        if (None in translations.val()):
+            numberOfTranslations -= translations.val().count(None)
+    
+    translationQueryNumber = numberOfTranslations + 1
+
     data = {"Email":accountEmail,"Translate from":translateFrom,"translate to":translateTo,"translated text":translatedText,"Translation":translation}
     db.child("USER LANGUAGES").child(translationQueryNumber).set(data)
 
@@ -68,9 +92,11 @@ def adjustLanguageStats(translateFrom, translateTo):
             db.child("LANGUAGES").child(str(language_key)).update({"Number of translations to language":str(n)})
 
 
-# addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
-# addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
-# addNewlanguages()
-# adjustLanguageStats("Sesotho","IsiZulu")
-# adjustLanguageStats("IsiZulu","Afrikaans")
-# adjustLanguageStats("Afrikaans","Sesotho")
+addNewUser("mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
+addNewUser("mokgethilakabane@gmail.com","Lakabane","Mokgethi","Sesotho","Basic TshiVenda")
+addNewUserLanguage("mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
+addNewUserLanguage("mokgethilakabane@gamil.com","Isizulu","English","Lalela la","listen here")
+addNewlanguages()
+adjustLanguageStats("Sesotho","IsiZulu")
+adjustLanguageStats("IsiZulu","Afrikaans")
+adjustLanguageStats("Afrikaans","Sesotho")
