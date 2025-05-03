@@ -4,18 +4,15 @@ import csv
 # import pyrebase
 
 # AI Api for module content from hugging face
-from transformers import T5Tokenizer, AutoModelForSeq2SeqLM
+from transformers import T5Tokenizer, AutoModelForSeq2SeqLM, AutoTokenizer
 
-tokenizer = T5Tokenizer.from_pretrained("UBC-NLP/cheetah-base")
-model = AutoModelForSeq2SeqLM.from_pretrained("UBC-NLP/cheetah-base")
-
-prompt="You are a Zulu language tutor for adults. You teach Zulu greetings at a basic level. You say phrases and phrases only."
-
+tokenizer = AutoTokenizer.from_pretrained("google/flan-t5-base")
+model = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
+prompt = "List 5 simple Zulu greetings with their English translations."
 input_ids = tokenizer(prompt, return_tensors="pt").input_ids
-outputs = model.generate(input_ids)
-print("Tokenized input:", tokenizer.tokenize(prompt))
-print("Decoded output:", tokenizer.decode(outputs[0], skip_special_tokens=True))
-
+outputs = model.generate(input_ids, max_new_tokens=100)
+response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print("Model response:\n", response)
 
 app = Flask(__name__)
 CORS(app)
