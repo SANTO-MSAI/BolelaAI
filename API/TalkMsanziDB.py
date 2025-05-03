@@ -39,9 +39,22 @@ def addNewlanguages():
     #     n += 1
     #     db.child("LANGUAGES").child(f"{n}").set(dataSet)
 
-def adjustLanguageStats():
-    pass
+def adjustLanguageStats(translateFrom, translateTo):
+    languages = db.child("LANGUAGES").get()
+    for language in languages.each():
+        if language.val()["Name"] == translateFrom:
+            n = int (language.val()["Number of translations from language"])
+            n += 1
+            db.child("LANGUAGES").child(language.key()).update({"Net translation queries":str(n)})
+            db.child("LANGUAGES").child(language.key()).update({"Number of translations from language":str(n)})
+        elif language.val()["Name"] == translateTo:
+            n = int (language.val()["Number of translations to language"])
+            n += 1
+            db.child("LANGUAGES").child(language.key()).update({"Net translation queries":str(n)})
+            db.child("LANGUAGES").child(language.key()).update({"Number of translations to language":str(n)})
 
-# addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
-# addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
+
+addNewUser("1","mothofeelama@gmail.com","Mothofeela","Makgetha","Sesotho","Basic XiTsonga")
+addNewUserLanguage("1","mothofeelama@gmail.com","Sesotho","English","Dumela","Hello")
 addNewlanguages()
+# adjustLanguageStats("Sesotho,IsiZulu")
