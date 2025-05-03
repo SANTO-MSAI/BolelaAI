@@ -30,11 +30,11 @@ const Signup = () => {
     //   });
     //   navigate('/dashboard');
     // }, 1500);
-      try {  // TESTING API CALL AT LOCALHOST:8090
+      try {  // TESTING API CALL AT LOCALHOST:
         const response = await fetch("http://localhost:5000/signup", {
             method: "POST",
             headers: {
-                "Content-Type": "user cridentials",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({ name, email, password }),
         });
