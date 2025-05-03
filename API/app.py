@@ -10,6 +10,9 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = "thetha!"
 
+api_key = "444t95o4afedabca0957fcb3605bfd54"
+api_url = "https://api.shecodes.io/ai/v1/generate"
+
 config = {
   "apiKey": "AIzaSyA5UXGB29M3onAyLhutM_NVbHtHelDf0dg",
   "authDomain": "talkmzansi-88466.firebaseapp.com",
@@ -109,42 +112,175 @@ def profile():
 ##################################ZULU LESSONS#####################################################
 @app.route("/lessons/zulu/basic/1")
 def zulu_basic_lesson_1():
-    pass
+    
+    if request.method == "GET":
+
+        prompt = f"Generate a basic lesson of the zulu language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/basic/2")
 def zulu_basic_lesson_2():
-    pass
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/conversation/3")
 def zulu_conversation_lesson_3():
-    pass
+
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/conversation/4")
-def zulu_conversation_lesson_4():
-    pass
+def zulu_conversation_lesson_4(): # 
+
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"{user_input}"
+        context = ("You are just a person having a conversation with another person.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/vocabulary/5")
 def zulu_vocabulary_lesson_5():
-    pass
+
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For someone who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/vocabulary/6")
 def zulu_vocabulary_lesson_6():
-    pass
+
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/listening/7")
 def zulu_listening_lesson_7():
-    pass
+
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 @app.route("/lessons/zulu/listening/8")
 def zulu_listening_lesson_8():
-    pass
+    
+    if request.method == "POST":
+        data = request.get_json()
+        user_input = data.get("input")
+
+        prompt = f"Generate a basic lesson of the {user_input} language"
+        context = ("For some who is new to the language.")
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
 
 
 ##################################XHOSA LESSONS#####################################################
