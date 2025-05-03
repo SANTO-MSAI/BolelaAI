@@ -69,7 +69,7 @@ def signup():
         email = data["email"]
         password = data["password"]
         auth.create_user_with_email_and_password(email, password)
-        addNewUser()
+        addNewUser(email,name,"","","N/A")
         # user = auth.get_account_info(user["id_token"])
         # user = auth.send_email_verification(user["id_token"])
         # user = auth.send_password_reset_email(user["id_token"])
