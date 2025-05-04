@@ -5,7 +5,6 @@ import pyrebase
 from TalkMsanziDB import *
 
 
-
 app = Flask(__name__)
 CORS(app)
 app.secret_key = "thetha!"
@@ -89,34 +88,11 @@ def logout():
     return redirect("/")
 
 
-@app.route("/lessons")
-def lessons():
-    pass
-
-
-@app.route("/practice")
-def practice():
-    pass
-
-
-@app.route("/dashboard")
-def dashboard():
-    pass
-
-
-@app.route("/profile")
-def profile():
-    pass
-
-
 ##################################ZULU LESSONS#####################################################
-@app.route("/lessons/zulu/basic/1")
-def zulu_basic_lesson_1():
-    
-    if request.method == "GET":
-
-        prompt = f"Generate a basic lesson of the zulu language"
-        context = ("For some who is new to the language.")
+def basic_prompt(lang, level, lesson):
+    if lesson == 1:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
         
         response = request.get(api_url, params={
             "prompt": prompt,
@@ -128,488 +104,479 @@ def zulu_basic_lesson_1():
             return jsonify(response.json())
         else:
             return jsonify({"error": "Failed to fetch basic lesson"}), 500
+        
+    else:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+
+
+def conversation_prompt(lang, level, lesson):
+    if lesson == 3:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+        
+    else:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+
+
+def vocabulary_prompt(lang, level, lesson):
+    if lesson == 5:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+        
+    else:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+
+
+def listening_prompt(lang, level, lesson):
+    if lesson == 7:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+        
+    else:
+        prompt = f"Generate a {level} lesson of the {lang} language"
+        context = ("For someone who is new to the language.") #(formate)
+        
+        response = request.get(api_url, params={
+            "prompt": prompt,
+            "context": context,
+            "key": api_key
+        })
+
+        if response.status_code == 200:
+            return jsonify(response.json())
+        else:
+            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+
+
+@app.route("/lessons/zulu/basic/1")
+def zulu_basic_lesson_1():
+    basic_prompt("zulu", "basic", 1)
 
 
 @app.route("/lessons/zulu/basic/2")
 def zulu_basic_lesson_2():
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For some who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    basic_prompt("zulu", "basic", 2)
 
 
 @app.route("/lessons/zulu/conversation/3")
 def zulu_conversation_lesson_3():
-
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For some who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    conversation_prompt("zulu", "coversation", 3)
 
 
 @app.route("/lessons/zulu/conversation/4")
-def zulu_conversation_lesson_4(): # 
-
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"{user_input}"
-        context = ("You are just a person having a conversation with another person.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+def zulu_conversation_lesson_4(): 
+    conversation_prompt("zulu", "coversation", 4)
 
 
 @app.route("/lessons/zulu/vocabulary/5")
 def zulu_vocabulary_lesson_5():
-
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For someone who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    vocabulary_prompt("zulu", "vocabulary", 5)
 
 
 @app.route("/lessons/zulu/vocabulary/6")
 def zulu_vocabulary_lesson_6():
-
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For some who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    vocabulary_prompt("zulu", "vocabulary", 6)
 
 
 @app.route("/lessons/zulu/listening/7")
 def zulu_listening_lesson_7():
-
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For some who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    listening_prompt("zulu", "listening", 7)
 
 
 @app.route("/lessons/zulu/listening/8")
 def zulu_listening_lesson_8():
-    
-    if request.method == "POST":
-        data = request.get_json()
-        user_input = data.get("input")
-
-        prompt = f"Generate a basic lesson of the {user_input} language"
-        context = ("For some who is new to the language.")
-        
-        response = request.get(api_url, params={
-            "prompt": prompt,
-            "context": context,
-            "key": api_key
-        })
-
-        if response.status_code == 200:
-            return jsonify(response.json())
-        else:
-            return jsonify({"error": "Failed to fetch basic lesson"}), 500
+    listening_prompt("zulu", "listening", 8)
 
 
 ##################################XHOSA LESSONS#####################################################
 @app.route("/lessons/xhosa/basic/1")
 def xhosa_basic_lesson_1():
-    pass
+    basic_prompt("xhosa", "basic", 1)
 
 
 @app.route("/lessons/xhosa/basic/2")
 def xhosa_basic_lesson_2():
-    pass
+    basic_prompt("xhosa", "basic", 2)
 
 
 @app.route("/lessons/xhosa/conversation/3")
 def xhosa_conversation_lesson_3():
-    pass
+    conversation_prompt("xhosa", "coversation", 3)
 
 
 @app.route("/lessons/xhosa/conversation/4")
-def xhosa_conversation_lesson_4():
-    pass
+def xhosa_conversation_lesson_4(): 
+    conversation_prompt("xhosa", "coversation", 4)
 
 
 @app.route("/lessons/xhosa/vocabulary/5")
 def xhosa_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("xhosa", "vocabulary", 5)
 
 
 @app.route("/lessons/xhosa/vocabulary/6")
 def xhosa_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("xhosa", "vocabulary", 6)
 
 
 @app.route("/lessons/xhosa/listening/7")
 def xhosa_listening_lesson_7():
-    pass
+    listening_prompt("xhosa", "listening", 7)
 
 
 @app.route("/lessons/xhosa/listening/8")
 def xhosa_listening_lesson_8():
-    pass
-
+    listening_prompt("xhosa", "listening", 8)
 
 ##################################AFRIKAANS LESSONS#####################################################
 @app.route("/lessons/afrikaans/basic/1")
 def afrikaans_basic_lesson_1():
-    pass
+    basic_prompt("afrikaans", "basic", 1)
 
 
 @app.route("/lessons/afrikaans/basic/2")
 def afrikaans_basic_lesson_2():
-    pass
+    basic_prompt("afrikaans", "basic", 2)
 
 
 @app.route("/lessons/afrikaans/conversation/3")
 def afrikaans_conversation_lesson_3():
-    pass
+    conversation_prompt("afrikaans", "coversation", 3)
 
 
 @app.route("/lessons/afrikaans/conversation/4")
-def afrikaans_conversation_lesson_4():
-    pass
+def afrikaans_conversation_lesson_4(): 
+    conversation_prompt("afrikaans", "coversation", 4)
 
 
 @app.route("/lessons/afrikaans/vocabulary/5")
 def afrikaans_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("afrikaans", "vocabulary", 5)
 
 
 @app.route("/lessons/afrikaans/vocabulary/6")
 def afrikaans_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("afrikaans", "vocabulary", 6)
 
 
 @app.route("/lessons/afrikaans/listening/7")
 def afrikaans_listening_lesson_7():
-    pass
+    listening_prompt("afrikaans", "listening", 7)
 
 
 @app.route("/lessons/afrikaans/listening/8")
 def afrikaans_listening_lesson_8():
-    pass
+    listening_prompt("afrikaans", "listening", 8)
 
 
 ##################################SOTHO LESSONS#####################################################
 @app.route("/lessons/sotho/basic/1")
 def sotho_basic_lesson_1():
-    pass
+    basic_prompt("sotho", "basic", 1)
 
 
 @app.route("/lessons/sotho/basic/2")
 def sotho_basic_lesson_2():
-    pass
+    basic_prompt("sotho", "basic", 2)
 
 
 @app.route("/lessons/sotho/conversation/3")
 def sotho_conversation_lesson_3():
-    pass
+    conversation_prompt("sotho", "coversation", 3)
 
 
 @app.route("/lessons/sotho/conversation/4")
-def sotho_conversation_lesson_4():
-    pass
+def sotho_conversation_lesson_4(): 
+    conversation_prompt("sotho", "coversation", 4)
 
 
 @app.route("/lessons/sotho/vocabulary/5")
 def sotho_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("sotho", "vocabulary", 5)
 
 
 @app.route("/lessons/sotho/vocabulary/6")
 def sotho_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("sotho", "vocabulary", 6)
 
 
 @app.route("/lessons/sotho/listening/7")
 def sotho_listening_lesson_7():
-    pass
+    listening_prompt("sotho", "listening", 7)
 
 
 @app.route("/lessons/sotho/listening/8")
 def sotho_listening_lesson_8():
-    pass
-
+    listening_prompt("sotho", "listening", 8)
 
 ##################################TSWANA LESSONS#####################################################
 @app.route("/lessons/tswana/basic/1")
 def tswana_basic_lesson_1():
-    pass
+    basic_prompt("tswana", "basic", 1)
 
 
 @app.route("/lessons/tswana/basic/2")
 def tswana_basic_lesson_2():
-    pass
+    basic_prompt("tswana", "basic", 2)
 
 
 @app.route("/lessons/tswana/conversation/3")
 def tswana_conversation_lesson_3():
-    pass
+    conversation_prompt("tswana", "coversation", 3)
 
 
 @app.route("/lessons/tswana/conversation/4")
-def tswana_conversation_lesson_4():
-    pass
+def tswana_conversation_lesson_4(): 
+    conversation_prompt("tswana", "coversation", 4)
 
 
 @app.route("/lessons/tswana/vocabulary/5")
 def tswana_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("tswana", "vocabulary", 5)
 
 
 @app.route("/lessons/tswana/vocabulary/6")
 def tswana_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("tswana", "vocabulary", 6)
 
 
 @app.route("/lessons/tswana/listening/7")
 def tswana_listening_lesson_7():
-    pass
+    listening_prompt("tswana", "listening", 7)
 
 
 @app.route("/lessons/tswana/listening/8")
 def tswana_listening_lesson_8():
-    pass
-
+    listening_prompt("tswana", "listening", 8)
 
 ##################################VENDA LESSONS#####################################################
 @app.route("/lessons/venda/basic/1")
 def venda_basic_lesson_1():
-    pass
+    basic_prompt("venda", "basic", 1)
 
 
 @app.route("/lessons/venda/basic/2")
 def venda_basic_lesson_2():
-    pass
+    basic_prompt("venda", "basic", 2)
 
 
 @app.route("/lessons/venda/conversation/3")
 def venda_conversation_lesson_3():
-    pass
+    conversation_prompt("venda", "coversation", 3)
 
 
 @app.route("/lessons/venda/conversation/4")
-def venda_conversation_lesson_4():
-    pass
+def venda_conversation_lesson_4(): 
+    conversation_prompt("venda", "coversation", 4)
 
 
 @app.route("/lessons/venda/vocabulary/5")
 def venda_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("venda", "vocabulary", 5)
 
 
 @app.route("/lessons/venda/vocabulary/6")
 def venda_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("venda", "vocabulary", 6)
 
 
 @app.route("/lessons/venda/listening/7")
 def venda_listening_lesson_7():
-    pass
+    listening_prompt("venda", "listening", 7)
 
 
 @app.route("/lessons/venda/listening/8")
 def venda_listening_lesson_8():
-    pass
-
+    listening_prompt("venda", "listening", 8)
 
 ##################################TSONGA LESSONS#####################################################
 @app.route("/lessons/tsonga/basic/1")
 def tsonga_basic_lesson_1():
-    pass
+    basic_prompt("tsonga", "basic", 1)
 
 
 @app.route("/lessons/tsonga/basic/2")
 def tsonga_basic_lesson_2():
-    pass
+    basic_prompt("tsonga", "basic", 2)
 
 
 @app.route("/lessons/tsonga/conversation/3")
 def tsonga_conversation_lesson_3():
-    pass
+    conversation_prompt("tsonga", "coversation", 3)
 
 
 @app.route("/lessons/tsonga/conversation/4")
-def tsonga_conversation_lesson_4():
-    pass
+def tsonga_conversation_lesson_4(): 
+    conversation_prompt("tsonga", "coversation", 4)
 
 
 @app.route("/lessons/tsonga/vocabulary/5")
 def tsonga_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("tsonga", "vocabulary", 5)
 
 
 @app.route("/lessons/tsonga/vocabulary/6")
 def tsonga_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("tsonga", "vocabulary", 6)
 
 
 @app.route("/lessons/tsonga/listening/7")
 def tsonga_listening_lesson_7():
-    pass
+    listening_prompt("tsonga", "listening", 7)
 
 
 @app.route("/lessons/tsonga/listening/8")
 def tsonga_listening_lesson_8():
-    pass
-
+    listening_prompt("tsonga", "listening", 8)
 
 ##################################SWATI LESSONS#####################################################
 @app.route("/lessons/swati/basic/1")
 def swati_basic_lesson_1():
-    pass
+    basic_prompt("swati", "basic", 1)
 
 
 @app.route("/lessons/swati/basic/2")
 def swati_basic_lesson_2():
-    pass
+    basic_prompt("swati", "basic", 2)
 
 
 @app.route("/lessons/swati/conversation/3")
 def swati_conversation_lesson_3():
-    pass
+    conversation_prompt("swati", "coversation", 3)
 
 
 @app.route("/lessons/swati/conversation/4")
-def swati_conversation_lesson_4():
-    pass
+def swati_conversation_lesson_4(): 
+    conversation_prompt("swati", "coversation", 4)
 
 
 @app.route("/lessons/swati/vocabulary/5")
 def swati_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("swati", "vocabulary", 5)
 
 
 @app.route("/lessons/swati/vocabulary/6")
 def swati_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("swati", "vocabulary", 6)
 
 
 @app.route("/lessons/swati/listening/7")
 def swati_listening_lesson_7():
-    pass
+    listening_prompt("swati", "listening", 7)
 
 
 @app.route("/lessons/swati/listening/8")
 def swati_listening_lesson_8():
-    pass
-
+    listening_prompt("swati", "listening", 8)
 
 ##################################NDEBELE LESSONS#####################################################
 @app.route("/lessons/ndebele/basic/1")
 def ndebele_basic_lesson_1():
-    pass
+    basic_prompt("ndebele", "basic", 1)
 
 
 @app.route("/lessons/ndebele/basic/2")
 def ndebele_basic_lesson_2():
-    pass
+    basic_prompt("ndebele", "basic", 2)
 
 
 @app.route("/lessons/ndebele/conversation/3")
 def ndebele_conversation_lesson_3():
-    pass
+    conversation_prompt("ndebele", "coversation", 3)
 
 
 @app.route("/lessons/ndebele/conversation/4")
-def ndebele_conversation_lesson_4():
-    pass
+def ndebele_conversation_lesson_4(): 
+    conversation_prompt("ndebele", "coversation", 4)
 
 
 @app.route("/lessons/ndebele/vocabulary/5")
 def ndebele_vocabulary_lesson_5():
-    pass
+    vocabulary_prompt("ndebele", "vocabulary", 5)
 
 
 @app.route("/lessons/ndebele/vocabulary/6")
 def ndebele_vocabulary_lesson_6():
-    pass
+    vocabulary_prompt("ndebele", "vocabulary", 6)
 
 
 @app.route("/lessons/ndebele/listening/7")
 def ndebele_listening_lesson_7():
-    pass
+    listening_prompt("ndebele", "listening", 7)
 
 
 @app.route("/lessons/ndebele/listening/8")
 def ndebele_listening_lesson_8():
-    pass
-
+    listening_prompt("ndebele", "listening", 8)
 
 if __name__=="__main__":
     addNewlanguages()
