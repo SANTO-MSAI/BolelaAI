@@ -4,6 +4,23 @@ import csv
 import pyrebase
 from TalkMsanziDB import *
 
+result_formate = {
+    "title": "Zulu Lesson 1: Introduction",
+    "levels": [
+        {
+            "level": "Level 1: Greetings & Basics",
+            "content": [
+                {"english": "Hello (singular)", "zulu": "Sawubona"},
+                {"english": "Hello (plural)", "zulu": "Sanibonani"},
+                {"english": "How are you?", "zulu": "Unjani?"},
+                {"english": "I'm fine", "zulu": "Ngikhona"},
+                {"english": "Thank you", "zulu": "Ngiyabonga"},
+                {"english": "Yes", "zulu": "Yebo"},
+                {"english": "No", "zulu": "Cha"},
+            ]
+        },]
+    }
+
 
 app = Flask(__name__)
 CORS(app)
@@ -77,7 +94,7 @@ def signup():
         # user = auth.send_email_verification(user["id_token"])
         # user = auth.send_password_reset_email(user["id_token"])
 
-        return jsonify({"message": "Sign-up successfully"}), 201
+        return jsonify({"message": "Sign-up successfully"}), 200
     except Exception as e:
         print("Error occurred:", e)
         return jsonify({"message": "email_exists"}), 400
@@ -91,9 +108,10 @@ def logout():
 
 ##################################ZULU LESSONS#####################################################
 def basic_prompt(lang, level, lesson):
+
     if lesson == 1:
-        prompt = f"Generate a {level} lesson of the {lang} language"
-        context = ("For someone who is new to the language.") #(formate)
+        prompt = f"Generate a {level} lesson of the {lang} language for greetings and introductions"
+        context = (f"return the result as python dictionary, in this format {result_formate} ") #(formate)
         
         response = request.get(api_url, params={
             "prompt": prompt,
@@ -107,8 +125,8 @@ def basic_prompt(lang, level, lesson):
             return jsonify({"error": "Failed to fetch basic lesson"}), 500
         
     else:
-        prompt = f"Generate a {level} lesson of the {lang} language"
-        context = ("For someone who is new to the language.") #(formate)
+        prompt = f"Generate a {level} lesson of the {lang} language numbers and counting"
+        context = ("return the result as python dictionary.") #(formate)
         
         response = request.get(api_url, params={
             "prompt": prompt,
