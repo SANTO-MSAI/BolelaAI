@@ -20,15 +20,43 @@ const Login = () => {
     setIsLoading(true);
 
     // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Login Successful",
-        description: "Welcome back to TalkMzansi!",
+    try {  // TESTING API CALL AT LOCALHOST:
+      const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
       });
-      navigate('/dashboard');
-    }, 1500);
-  };
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast({
+          title: "logged in",
+          description: "Welcome back to TalkMzansi! Let's continue learning.",
+        });
+        // ✅ Redirect to dashboard
+        navigate('/dashboard');
+      } else {
+        // Show error from backend
+        toast({
+          title: "login Failed",
+          description: data.message || "Please try again.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error("login failed:", error);
+      toast({
+        title: "Network Error",
+        description: "Unable to connect to server.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+};
 
   return (
     <Layout>

@@ -49,7 +49,7 @@ def speech_practice_request():
         return jsonify({'message': 'Error adding speech.'}), 500
 
 
-@app.route("/login", methods=['POST', "GET"])
+@app.route("/login", methods=['POST'])
 def signin():
     if request.method == "POST":
         data = request.json
@@ -58,6 +58,7 @@ def signin():
     try:
         user = auth.sign_in_with_email_and_password(email, password)
         session[user] = email
+        return jsonify({"message": "Login successful"}), 200
     except:
         return jsonify({"message": "Failed to login"}), 401   
 
