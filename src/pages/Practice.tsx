@@ -69,7 +69,30 @@ const Practice = () => {
        * Create mock object to test communication
        * Key:value = speech:randomPhrase
        */
-     axios.post("http://localhost:5000/speech_practice", randomPhrases, {
+
+      const speech = {
+        'Sesotho': [{
+          'speech': "O phela joang?",
+          'language' : "Sesotho"
+        }, {
+          'speech': "Tlohela ke nahanisise.",
+          "language" : "Sesotho"
+        }]
+        ,
+        'Zulu': [
+          {
+            'speech': "Kumnandi lapha.",
+            'language' : "IsiZulu"
+          },
+           {
+            'speech': "Uyangihlekisa. ",
+            'language' : "IsiZulu"
+          }
+        ] 
+       
+      }
+
+     axios.post("http://localhost:5000/speech_practice", speech.Sesotho, {
             headers: {
               'Content-Type': 'application/json'
             }

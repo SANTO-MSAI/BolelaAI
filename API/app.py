@@ -42,7 +42,8 @@ def speech_practice_request():
         with open(user_speech, 'a', newline='') as file:
             writer = csv.writer(file)
             for item in data:
-                writer.writerow([item['phrase'], item['translation']])
+                writer.writerow([item['speech']])
+
         return jsonify({'message': 'Speech received.'}), 201
     except Exception as e:
         print("Error occurred:", e)
@@ -57,7 +58,7 @@ def signin():
         password = data["password"]
     try:
         user = auth.sign_in_with_email_and_password(email, password)
-        session[user] = email
+        # session[user] = email
         return jsonify({"message": "Login successful"}), 200
     except:
         return jsonify({"message": "Failed to login"}), 401   
