@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   

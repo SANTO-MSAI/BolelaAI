@@ -21,32 +21,43 @@ const Signup = () => {
     e.preventDefault();
     setIsLoading(true);
 
-    // Simulate API call
-    // setTimeout(() => {
-    //   setIsLoading(false);
-    //   toast({
-    //     title: "Account Created",
-    //     description: "Welcome to TalkMzansi! Let's start learning.",
-    //   });
-    //   navigate('/dashboard');
-    // }, 1500);
-      try {  // TESTING API CALL AT LOCALHOST:8090
+      try {  // TESTING API CALL AT LOCALHOST:
         const response = await fetch("http://localhost:5000/signup", {
             method: "POST",
             headers: {
-                "Content-Type": "user cridentials",
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({ name, email, password }),
         });
 
         const data = await response.json();
-        console.log(data); // Handle success (e.g., redirect or show message)
-    } catch (error) {
-        console.error("Signup failed:", error);
-    } finally {
-        setIsLoading(false);
+
+    if (response.ok) {
+      toast({
+        title: "Account Created",
+        description: "Welcome to TalkMzansi! Let's start learning.",
+      });
+      // ✅ Redirect to dashboard
+      navigate('/dashboard');
+    } else {
+      // Show error from backend
+      toast({
+        title: "Signup Failed",
+        description: data.message || "Please try again.",
+        variant: "destructive",
+      });
     }
-  };
+  } catch (error) {
+    console.error("Signup failed:", error);
+    toast({
+      title: "Network Error",
+      description: "Unable to connect to server.",
+      variant: "destructive",
+    });
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <Layout>

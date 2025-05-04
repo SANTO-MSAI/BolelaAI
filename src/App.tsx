@@ -13,6 +13,7 @@ import Practice from "./pages/Practice";
 import NotFound from "./pages/NotFound";
 import BasicLessons from "./pages/BasicLessons";
 import GreetingsModule from "./pages/GreetingsModule";
+import Profile from './pages/Profile';
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/basiclessons/:language/:typeId/:moduleId" element={<BasicLessons />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="greetings" element={<GreetingsModule />} />
+          <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
