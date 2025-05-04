@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Lessons</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='basic_lessons.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1 class="heading">Basic Lessons in {{ language.upper() }}</h1>
+    <p class="subheading">Lesson Type: {{ type_id }}</p>
+
+    <div class="modules">
+      {% for module in modules %}
+        <a href="{{ url_for('basic_lessons', language=language, type_id=type_id) }}/{{ module.id }}" class="card">
+          <div>
+            <h2 class="card-title">{{ module.title }}</h2>
+            <p class="card-desc">{{ module.description }}</p>
+            <a href="{{ url_for('greetings') }}">
+              <button class="button">Start Module</button>
+            </a>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="return-home">
+      <a href="/">
+        <button class="button primary">Return to Home</button>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
