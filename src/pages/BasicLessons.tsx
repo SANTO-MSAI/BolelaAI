@@ -7,8 +7,8 @@ const BasicLessons = () => {
 
   // Fake modules
   const modules = [
-    { id: 1, title: "Greetings", description: "Learn how to greet people." },
-    { id: 2, title: "Numbers and counting", description: "How to introduce yourself." },
+    { id: "/greetings", title: "Greetings", description: "Learn how to greet people." },
+    { id: "/numbers", title: "Numbers and counting", description: "How to introduce yourself." },
     { id: 3, title: "Common Phrases", description: "Everyday useful phrases." },
     { id: 4, title: "Questions", description: "Asking and answering questions." },
     { id: 5, title: "Responses", description: "How to respond politely." }
@@ -36,7 +36,7 @@ const BasicLessons = () => {
                 {module.title}
               </h2>
               <p className="text-sm text-muted-foreground">{module.description}</p>
-              <Link to="/greetings" className="mt-4 md:mt-0">
+              <Link to={module.id} className="mt-4 md:mt-0">
               <Button className="mt-4 w-full">Start Module</Button>
               </Link>
               

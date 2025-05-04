@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound";
 import BasicLessons from "./pages/BasicLessons";
 import GreetingsModule from "./pages/GreetingsModule";
 import Profile from './pages/Profile';
-
+import NumbersModule from './pages/NumbersModule';
 
 const queryClient = new QueryClient();
 
@@ -34,6 +34,7 @@ const App = () => (
           <Route path="/practice" element={<Practice />} />
           <Route path="greetings" element={<GreetingsModule />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/numbers" element={<NumbersModule/>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
