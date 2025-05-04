@@ -44,7 +44,7 @@ def speech_practice_request():
         n = 0
         for item in data:
             n += 1
-            addNewUserLanguage(f"John Doe {n}","IsiZulu","English",item["phrase"],item["translation"])
+            addNewUserLanguage(f"John Doe {n}",item["language"],"English",item["speech"],"placeholder")
 
         return jsonify({'message': 'Speech received.'}), 201
     except Exception as e:
