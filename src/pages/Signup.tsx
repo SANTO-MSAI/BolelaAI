@@ -37,7 +37,6 @@ const Signup = () => {
         title: "Account Created",
         description: "Welcome to TalkMzansi! Let's start learning.",
       });
-
       // ✅ Redirect to dashboard
       navigate('/dashboard');
     } else {
