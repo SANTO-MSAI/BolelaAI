@@ -9,9 +9,9 @@ const BasicLessons = () => {
   const modules = [
     { id: "/greetings", title: "Greetings", description: "Learn how to greet people." },
     { id: "/numbers", title: "Numbers and counting", description: "How to introduce yourself." },
-    { id: 3, title: "Common Phrases", description: "Everyday useful phrases." },
-    { id: 4, title: "Questions", description: "Asking and answering questions." },
-    { id: 5, title: "Responses", description: "How to respond politely." }
+    { id: "/phrases", title: "Common Phrases", description: "Everyday useful phrases." },
+    { id: "/questions", title: "Questions", description: "Asking and answering questions." },
+    { id: "/responses", title: "Responses", description: "How to respond politely." }
   ];
 
   return (
